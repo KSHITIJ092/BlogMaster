@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <img src="assets/Images/pic.png" class="rounded-circle profile-pic mb-3 " alt="Profile Picture">
+        <h2 class="profile-name">{{userName}}</h2>
+        <p class="profile-bio">{{userEmail}}</p>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Bio</h5>
+            <p class="card-text">{{aboutUser}}</p>
+          </div>
+        </div>
+  
+        <!-- Tabs for My Blogs and Saved Blogs -->
+        <ul class="nav nav-tabs" id="profileTab" role="tablist" ngbNav #nav="ngbNav" [(activeId)]="activeId">
+          <li class="nav-item" [ngbNavItem]="1">
+            <button ngbNavLink>My Blogs</button>
+            <ng-template ngbNavContent>
+                <!-- My Blogs content here -->
+                 <app-view [blogs]="myBlogs" (refresh)="refreshData()" [controlVisibility]="true"></app-view>
+            </ng-template>
+          </li>
+          <li class="nav-item" [ngbNavItem]="2">
+            <button ngbNavLink >Saved Blogs</button>
+            <ng-template ngbNavContent> 
+              <app-view [blogs]="savedBlogs" (refresh)="refreshData()" [controlVisibility]="false"></app-view>
+              </ng-template>
+          </li>
+        </ul>
+        <div [ngbNavOutlet]="nav"></div>
+
+  
+        <div class="tab-content" id="profileTabContent">
+          
+  
+
+        </div>
+      </div>
+    </div>
+  </div>
